@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- DESING UI BY LYNN 64BIT -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUALITY</title>
+    <script src="https://unpkg.com/vue@3.2.40/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <style>
+        html {
+            background-color: transparent !important;
+        }
+    </style>
+    <!-- CODE BY QUALITY SHOP -->
+    <!-- DC: https://discord.gg/rHDYnCrdKK -->
+    <!-- DESING UI BY LYNN 64BIT -->
+</head>
+<body>
+    <div id="app">
+          <div v-if="isOpen" class="flex relative">
+            <div class="bg-gray-900 text-white text-2xl w-[250px] h-[250px] rounded-[25px] absolute left-20 top-[350px]">
+                <div class="text-center bg-gray-800 rounded-t-[25px]">
+                    <span>AIMBOT</span>
+                </div>
+                <br>
+                <!-- DESING UI BY LYNN 64BIT -->
+                <div class="form-control">
+                    <label class="label cursor-pointer">
+                      <span class="label-text text-2xl text-white">เปิด/ปิด</span>
+                      <input v-model="aimOpen" type="checkbox" class="toggle toggle-primary" checked />
+                    </label>
+                  </div>
+                  <br>
+                  <!-- DESING UI BY LYNN 64BIT -->
+                  <input v-model="aimSize" type="range" min="0" max="50" class="range " step="10" />
+                    <div class="w-full flex justify-between text-xs px-2">
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                        <span>|</span>
+                    </div>
+                    <!-- DESING UI BY LYNN 64BIT -->
+                    <div class="flex relative">
+                        <div class="text-center text-white bg-gray-800 w-full mt-[30px] rounded-b-[25px]">
+                            ปิดเมนู ESC
+                        </div>
+                    </div>
+            </div>
+            <!-- DESING UI BY LYNN 64BIT -->
+          </div>
+          <div class="flex h-screen">
+            <div class="m-auto relative">
+                <div v-if="aimOpen" style="position:absolute; margin-top: -57px; margin-left:-5px;">
+                    <span :style="'font-size: ' + aimSize +'px;'">.</span>
+                    <!-- margin-top: -57px;
+                        ขนาด 50px
+                    margin-left: -5px; -->
+                </div>
+            </div>
+        </div>
+<!-- DESING UI BY LYNN 64BIT -->
+    
+    </div>
+<!-- DESING UI BY LYNN 64BIT -->
+    <script>
+        const { createApp } = Vue
+      
+        createApp({
+          data() {
+            return {
+                isOpen: false,
+                aimOpen: false,
+                aimSize:0
+            }
+          },
+          
+          mounted() {
+                window.addEventListener('message', function(e) {
+                    let res = e.data
+                    
+                    if (res.type == 'isOpen') {
+                        this.isOpen = true
+                    }
+                    if (res.type == 'close') {
+                        this.isOpen = false
+                    }
+                }.bind(this))
+                window.addEventListener('keyup', function(e) {
+                if (e.keyCode == 27) {
+                    this.isOpen = false
+                    fetch(`https://${GetParentResourceName()}/close`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        }
+                    })
+                }
+            }.bind(this))
+        }
+        }).mount('#app')
+      </script>
+      <!-- DESING UI BY LYNN 64BIT -->
+</body>
+</html>
+<!-- ขายต่อมึงตกนรกนะ เพราะมึงไม่แบ่งตังกุอะ -->
+<!-- DESING UI BY LYNN 64BIT -->
