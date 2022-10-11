@@ -4,11 +4,11 @@
 ## รูปตอนใช้งานจริง 
 ![image](https://user-images.githubusercontent.com/69198341/194934389-8cf34e73-1c79-47e0-9dae-63161594081a.png)
 
-#คำสั่ง เปิดและปิด
+#คำสั่ง เปิด
 ```
 /command open
 ```
-
+#คำสั่ง ปิด
 # ปิดกด ESC
 
 
